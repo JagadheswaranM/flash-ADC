@@ -1,0 +1,53 @@
+* c:\users\jagad\desktop\esim\flashtypeadc\flashtypeadc.cir
+
+.include avsdcmp_3v3_sky130.sub
+.include "C:\FOSSEE\eSim\library\sky130_fd_pr\models\sky130_fd_pr__model__diode_pw2nd_11v0.model.spice"
+.include "C:\FOSSEE\eSim\library\sky130_fd_pr\models\sky130_fd_pr__model__inductors.model.spice"
+.include "C:\FOSSEE\eSim\library\sky130_fd_pr\models\sky130_fd_pr__model__pnp.model.spice"
+.include "C:\FOSSEE\eSim\library\sky130_fd_pr\models\sky130_fd_pr__model__r+c.model.spice"
+.lib "C:\FOSSEE\eSim\library\sky130_fd_pr\models\sky130.lib.spice" tt
+.include "C:\FOSSEE\eSim\library\sky130_fd_pr\models\sky130_fd_pr__model__linear.model.spice"
+.include "C:\FOSSEE\eSim\library\sky130_fd_pr\models\sky130_fd_pr__model__diode_pd2nw_11v0.model.spice"
+x1 gnd gnd net-_sc1-pad2_ net-_x1-pad4_ net-_sc5-pad1_ gnd avsdcmp_3v3_sky130
+x2 gnd gnd net-_sc1-pad1_ net-_x1-pad4_ gnd gnd avsdcmp_3v3_sky130
+x3 gnd gnd net-_sc2-pad1_ net-_x1-pad4_ net-_u2-pad4_ gnd avsdcmp_3v3_sky130
+x4 gnd gnd net-_sc3-pad1_ net-_x1-pad4_ net-_u2-pad5_ gnd avsdcmp_3v3_sky130
+x5 gnd gnd net-_sc4-pad1_ net-_x1-pad4_ gnd gnd avsdcmp_3v3_sky130
+* u1  gnd net-_sc1-pad2_ zener
+* u2  gnd net-_sc5-pad1_ gnd net-_u2-pad4_ net-_u2-pad5_ gnd net-_u2-pad7_ net-_u2-pad8_ net-_u2-pad9_ gnd gnd out2 out1 out0 dvsd_8_bit_priority_encoder
+x6 gnd gnd net-_sc5-pad1_ net-_x6-pad4_ net-_u2-pad7_ gnd avsdcmp_3v3_sky130
+x7 gnd gnd gnd net-_x6-pad4_ net-_u2-pad8_ gnd avsdcmp_3v3_sky130
+x8 gnd gnd net-_sc8-pad1_ net-_x6-pad4_ net-_u2-pad9_ gnd avsdcmp_3v3_sky130
+v2 gnd gnd  dc 5
+v1 net-_sc6-pad2_ gnd  dc 5
+* u4  out2 plot_db
+* u5  out1 plot_db
+* u3  out0 plot_db
+xsc7 gnd net-_sc5-pad1_ sky130_fd_pr__res_generic_m1 L=0.85
+xsc8 net-_sc8-pad1_ gnd sky130_fd_pr__res_generic_m1 L=0.85
+xsc9 gnd net-_sc8-pad1_ sky130_fd_pr__res_generic_m1 L=0.85
+xsc6 net-_sc1-pad2_ net-_sc6-pad2_ sky130_fd_pr__res_generic_m1 L=0.85
+xsc1 net-_sc1-pad1_ net-_sc1-pad2_ sky130_fd_pr__res_generic_m1 L=0.85
+xsc2 net-_sc2-pad1_ net-_sc1-pad1_ sky130_fd_pr__res_generic_m1 L=0.85
+xsc3 net-_sc3-pad1_ net-_sc2-pad1_ sky130_fd_pr__res_generic_m1 
+xsc4 net-_sc4-pad1_ net-_sc3-pad1_ sky130_fd_pr__res_generic_m1 
+xsc5 net-_sc5-pad1_ net-_sc4-pad1_ sky130_fd_pr__res_generic_m1 
+* s c m o d e
+a1 gnd net-_sc1-pad2_ u1
+a2 [gnd ] [net-_sc5-pad1_ gnd net-_u2-pad4_ net-_u2-pad5_ gnd net-_u2-pad7_ net-_u2-pad8_ net-_u2-pad9_ ] [gnd ] [gnd ] [out2 out1 out0 ] u2
+* Schematic Name:                             zener, NgSpice Name: zener
+.model u1 zener(v_breakdown=5.6 i_breakdown=2.0e-2 i_sat=1.0e-12 n_forward=1.0 limit_switch=FALSE ) 
+* Schematic Name:                             dvsd_8_bit_priority_encoder, NgSpice Name: dvsd_8_bit_priority_encoder
+.model u2 dvsd_8_bit_priority_encoder(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 instance_id=15 ) 
+.tran 0.1e-00 2e-00 0e-00
+
+* Control Statements 
+.control
+run
+print allv > plot_data_v.txt
+print alli > plot_data_i.txt
+plot db(out2)
+plot db(out1)
+plot db(out0)
+.endc
+.end

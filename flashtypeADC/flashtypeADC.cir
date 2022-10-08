@@ -1,0 +1,35 @@
+* C:\Users\jagad\Desktop\ESIM\flashtypeADC\flashtypeADC.cir
+
+* EESchema Netlist Version 1.1 (Spice format) creation date: 10/08/22 20:15:52
+
+* To exclude a component from the Spice Netlist add [Spice_Netlist_Enabled] user FIELD set to: N
+* To reorder the component spice node sequence add [Spice_Node_Sequence] user FIELD and define sequence: 2,1,0
+
+* Sheet Name: /
+X1  GND GND Net-_SC1-Pad2_ Net-_X1-Pad4_ Net-_SC5-Pad1_ GND avsdcmp_3v3_sky130		
+X2  GND GND Net-_SC1-Pad1_ Net-_X1-Pad4_ GND GND avsdcmp_3v3_sky130		
+X3  GND GND Net-_SC2-Pad1_ Net-_X1-Pad4_ Net-_U2-Pad4_ GND avsdcmp_3v3_sky130		
+X4  GND GND Net-_SC3-Pad1_ Net-_X1-Pad4_ Net-_U2-Pad5_ GND avsdcmp_3v3_sky130		
+X5  GND GND Net-_SC4-Pad1_ Net-_X1-Pad4_ GND GND avsdcmp_3v3_sky130		
+U1  GND Net-_SC1-Pad2_ zener		
+U2  GND Net-_SC5-Pad1_ GND Net-_U2-Pad4_ Net-_U2-Pad5_ GND Net-_U2-Pad7_ Net-_U2-Pad8_ Net-_U2-Pad9_ GND GND out2 out1 out0 dvsd_8_bit_priority_encoder		
+X6  GND GND Net-_SC5-Pad1_ Net-_X6-Pad4_ Net-_U2-Pad7_ GND avsdcmp_3v3_sky130		
+X7  GND GND GND Net-_X6-Pad4_ Net-_U2-Pad8_ GND avsdcmp_3v3_sky130		
+X8  GND GND Net-_SC8-Pad1_ Net-_X6-Pad4_ Net-_U2-Pad9_ GND avsdcmp_3v3_sky130		
+v2  GND GND DC		
+v1  Net-_SC6-Pad2_ GND DC		
+U4  out2 plot_db		
+U5  out1 plot_db		
+U3  out0 plot_db		
+SC7  GND Net-_SC5-Pad1_ sky130_fd_pr__res_generic_m1		
+SC8  Net-_SC8-Pad1_ GND sky130_fd_pr__res_generic_m1		
+SC9  GND Net-_SC8-Pad1_ sky130_fd_pr__res_generic_m1		
+SC6  Net-_SC1-Pad2_ Net-_SC6-Pad2_ sky130_fd_pr__res_generic_m1		
+SC1  Net-_SC1-Pad1_ Net-_SC1-Pad2_ sky130_fd_pr__res_generic_m1		
+SC2  Net-_SC2-Pad1_ Net-_SC1-Pad1_ sky130_fd_pr__res_generic_m1		
+SC3  Net-_SC3-Pad1_ Net-_SC2-Pad1_ sky130_fd_pr__res_generic_m1		
+SC4  Net-_SC4-Pad1_ Net-_SC3-Pad1_ sky130_fd_pr__res_generic_m1		
+SC5  Net-_SC5-Pad1_ Net-_SC4-Pad1_ sky130_fd_pr__res_generic_m1		
+scmode1  SKY130mode		
+
+.end
